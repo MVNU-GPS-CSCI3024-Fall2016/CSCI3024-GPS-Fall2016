@@ -20,30 +20,30 @@ So that I may see the dollar value of the savings from using the energy panels
 
 ### Scenarios
 **Scenario: Valid savings search**
-Given that I am a user on the website
-And I select a time frame of [hour | day | week | month]
-And I enter the start date and end date
-And I select a location
-And I provide the energy rate for that location
-When I click submit
-Then I will see the savings for the selected location during the time frame specified with margin of error
+Given that I am a user on the website  
+And I select a time frame of [hour | day | week | month]  
+And I enter the start date and end date  
+And I select a location  
+And I provide the energy rate for that location  
+When I click submit  
+Then I will see the savings for the selected location during the time frame specified with margin of error  
 
 **Scenario: Attempt to search without dates**
-Given that I am a user on the website
-And I do not provide a [start date | end date]
-When I click submit
-Then an error message will display saying "Please provide [start date | end date]"
+Given that I am a user on the website  
+And I do not provide a [start date | end date]  
+When I click submit  
+Then an error message will display saying "Please provide [start date | end date]"  
 
 **Scenario: Attempt to search without energy rate**
-Given that I am a user on the website
-And I do not provide an energy rate charge
-When I click submit
-Then an error message will display saying "Please provide the rate the energy company charges"
+Given that I am a user on the website  
+And I do not provide an energy rate charge  
+When I click submit  
+Then an error message will display saying "Please provide the rate the energy company charges"  
 
 **Scenario: Attempt to search with end date preceeding start date**
-Given that I am a user on the website
-And I enter a start date
-And I enter an end date that is before the start date
-When I click submit
-Then an error message will display saying "Please enter a valid date range"
+Given that I am a user on the website  
+And I enter a start date  
+And I enter an end date that is before the start date  
+When I click submit  
+Then an error message will display saying "Please enter a valid date range"  
 
