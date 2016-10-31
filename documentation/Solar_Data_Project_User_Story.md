@@ -40,7 +40,7 @@ So that I may see the dollar value of the savings from using the energy panels
     When I click submit
     Then an error message will display saying "Please provide the rate the energy company charges"
 
-    **Scenario: Attempt to search with end date preceeding start date
+    **Scenario: Attempt to search with end date preceeding start date**
     Given that I am a user on the website
     And I enter a start date
     And I enter an end date that is before the start date
