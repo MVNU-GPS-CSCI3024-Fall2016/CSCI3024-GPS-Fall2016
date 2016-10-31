@@ -20,4 +20,5 @@
 
 ### External Resources
 [Dr. Skon's Solar Live Data](http://jimskon.com/solar/Solar.html "Belize Solar Data Summary")
+
 [Belize Energy Rates](http://www.bel.com.bz/Rate_Schedule.aspx "Belize Energy Rates")
