@@ -1,9 +1,9 @@
 # Solar Data Project User Story
 
-### Story
-As a user on the Solar Data website
-I want the ability to search solar data at a facility of choice with a provided energy rate
-So that I may see the dollar value of the savings from using the energy panels
+### Story  
+As a user on the Solar Data website  
+I want the ability to search solar data at a facility of choice with a provided energy rate  
+So that I may see the dollar value of the savings from using the energy panels  
 
 ### Acceptance Criteria
 * Allow the user to provide a date and/or time range, energy price rate, and select a facility
