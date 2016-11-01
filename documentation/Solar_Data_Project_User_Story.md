@@ -2,7 +2,7 @@
 
 ### Story  
 As a user on the Solar Data website  
-I want the ability to search solar data at a facility of choice with a provided energy rate  
+I want the ability to search solar data at a facility of choice over a specified time period with a provided energy rate  
 So that I may see the dollar value of the savings from using the energy panels  
 
 ### Acceptance Criteria
