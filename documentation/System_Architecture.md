@@ -41,11 +41,12 @@ Version 1.0
 	Data will be pre-cached in the database by a job server to improve accessibility.  
 	
 3. System Architecture View  
-
+Wade  
 4. Data Model View  
-
+Jay  
 5. Activity Diagram  
-
+Nic    
 6. Pre-Cache Statechart
-
-6. UI Mockup
+Nic  
+6. UI Mockup  
+Jay  
