@@ -15,10 +15,10 @@
    2.4 [Reliability and Availability](#2-4-reliability-and-availability)  
    2.5 [Performance](#2-5-performance)  
 3. [Logical Architecture View](#3-logical-architecture-view)  
-4. [Data Model View](4-data-model-view)  
-5. [Activity View](5-activity-view)  
-6. [Pre-Caching Statechart](6-pre-caching-statechart)  
-7. [UI Mockup](7-ui-mockup)  
+4. [Data Model View](#4-data-model-view)  
+5. [Activity View](#5-activity-view)  
+6. [Pre-Caching Statechart](#6-pre-caching-statechart-view)  
+7. [UI Mockup](#7-ui-mockup)  
 <br/>
 
 ## 1. Introduction  
@@ -84,7 +84,7 @@ Jeremy
 ## 5. Activity View  
 Nic  
 
-## 6. Pre-Cache Statechart  
+## 6. Pre-Caching Statechart View  
 Nic  
 
 ## 7. UI Mockup  
