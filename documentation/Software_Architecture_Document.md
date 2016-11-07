@@ -72,17 +72,30 @@ Solar data used to calculate savings will be pre-cached in the database by a job
 The logical system architecture of the proposed system illustrates an integration with existing systems. Existing hardware and software are
 being used to collect energy reading data from the solar panels. This data is persisted to an existing MySQL database that will be expanded
 by this project. A new Node.js program to calculate monetary savings will run parallel to an existing PHP program used to display raw solar data. 
-This information is rendered via HTML to the user. There is also a pre-caching batch job that will run regularly to write more accessible data to the
+This information is rendered via HTML to the user. There will also be a pre-caching batch job that will run regularly to write more accessible data to the
 existing database.  
 <br/>
 ![Alt](./images/Solar_Data_Web_Application_Logical_Architecture.png "Solar Data Web Application Logical Architecture")  
 <br/>
 
 ## 4. Data Model View  
+The new data model created by the project will include the existing table, as well as new tables to accommodate the proposed system. A Location table will be created
+to store new information about each location such as the location name, latitude, longitude, and the date the site first began collecting data. To
+create a link between this table and the original Answers table, a Bank table will be created which represents each bank of solar panels at the locations.
+This table will have a foreign key to the Location table's LocationID (BankID in the bank table is the same as the IID in the Answers table). The AnswersHourly 
+table will be added to store the results of the pre-caching job. This table will have the IID (bank), watts per hour, answer date (the date-time that 
+represents the hour of the sum of watts per hour), and process date (the timestamp that the record was created by the batch job).  
+<br/>
 ![Alt](./images/Data_Model.png "Solar Data Web Application Data Model")  
 <br/>
 
 ## 5. Activity View  
+The Activity diagram presents the various actions that will occur in the system. Upon arrival to the website, a user will provide inputs utilized by
+the program for queries and calculations. If there are invalid inputs, the user will receive error messages and will then need to re-enter the information. 
+If the inputs are valid, the program will use this information to perform a query of the data. If the result does not meet certain criteria (outlined in the User Stories),
+an error message will be displayed to the user, indicating to them that they need to refine/change their inputs. If the result meets the outlined
+criteria, then the system will perform the calculations needed to display the savings to the user.  
+<br/>
 ![Alt](./images/Activity_Architecture.png "Solar Data Web Application Activity Architecture")  
 <br/> 
 
