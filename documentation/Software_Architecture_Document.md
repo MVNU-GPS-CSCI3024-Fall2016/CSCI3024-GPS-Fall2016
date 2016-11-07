@@ -69,7 +69,7 @@ Solar data used to calculate savings will be pre-cached in the database by a job
 <br/>
 
 ## 3. Logical Architecture View  
-The logical system architecture of the propsed system illustrates an integration with existing systems. Existing hardware and software are
+The logical system architecture of the proposed system illustrates an integration with existing systems. Existing hardware and software are
 being used to collect energy reading data from the solar panels. This data is persisted to an existing MySQL database that will be expanded
 by this project. A new Node.js program to calculate monetary savings will run parallel to an existing PHP program used to display raw solar data. 
 This information is rendered via HTML to the user. There is also a pre-caching batch job that will run regularly to write more accessible data to the
