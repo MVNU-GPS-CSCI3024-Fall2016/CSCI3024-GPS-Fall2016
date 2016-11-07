@@ -59,7 +59,7 @@ For information on Node.js security, [click here](https://nodejs.org/en/security
 
 ### 2.3 Persistence  
 Data will be persisted via a MySQL database. While the solar data being collected is supplied by existing hardware/software,
-the schema will be expanded with additional tables ([see Data Model Diagram](#4-data-model)), including a table that stores pre-cached data.  
+the schema will be expanded with additional tables ([see Data Model Diagram](#4-data-model-view)), including a table that stores pre-cached data.  
 
 ### 2.4 Reliability and Availability  
 Reliability and availability are the responsibility of the owners of the existing website.  
