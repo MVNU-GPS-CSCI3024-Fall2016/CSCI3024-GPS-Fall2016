@@ -79,10 +79,12 @@ existing database.
 <br/>
 
 ## 4. Data Model View  
-Jeremy  
+![Alt](./images/Data_Model.png "Solar Data Web Application Data Model")  
+<br/>
 
 ## 5. Activity View  
-Nic  
+![Alt](./images/Activity_Architecture.png "Solar Data Web Application Activity Architecture")  
+<br/> 
 
 ## 6. Pre-Caching Statechart View  
 Nic  
