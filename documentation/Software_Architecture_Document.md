@@ -109,7 +109,7 @@ criteria, then the system will perform the calculations needed to display the sa
 
 ## 6. Pre-Caching Activity View  
 The pre-caching process is a batch job that runs at the end of each day. It collects data for that day, separates it by bank and hour, totals the energy collected, 
-and adds an collection entry for that date, bank, and hour to a table. Our program will then query this table and simply sum the results. This reduces the number 
+and adds a collection entry for that date, bank, and hour to a table. Our program will then query this table and simply sum the results. This reduces the number 
 of entries our program has to search to 1 entry for each 180 entries in the original data table.  
 <br/>
 ![Alt](./images/Pre-Caching_Activity_Architecture.png "Pre-Caching Batch Job Activity Architecture")
