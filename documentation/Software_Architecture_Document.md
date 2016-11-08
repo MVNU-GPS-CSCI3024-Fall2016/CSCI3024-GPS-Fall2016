@@ -46,7 +46,12 @@ margin of error results from missing data points, it is strictly positive, meani
 [Twitter Bootstrap](http://getbootstrap.com/)  
 
 ### 1.5 Overview  
-___________________
+**Section 2:** Outlines the architectural goals and constraints such as security, persistence, reliability, and performance.  
+**Section 3:** Describes the logical architecture of the new system and old system post-integration.  
+**Section 4:** Describes the data model of the system including new static tables and pre-caching tables.  
+**Section 5:** Describes the activities that will occur between the user and the new system.  
+**Section 6:** Describes the activities that will occur upon each run of the pre-caching job and its written result to the database.  
+**Section 7:** Illustrates the user interface/interactions of the new system.  
 <br/>
 	
 ## 2. Architectural Goals and Constraints  
