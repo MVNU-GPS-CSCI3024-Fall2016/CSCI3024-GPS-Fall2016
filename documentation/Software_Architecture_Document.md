@@ -107,7 +107,7 @@ The default web page will display with the date radio button selected with the d
 
 ![Alt](./images/uiDATEONLY.jpg "Default Web View")
 
-If the date and hour radio is selected, the added time inputs will be displayed.
+If the date and hour radio is selected, the added time inputs will be displayed. The following view shows the added time fields and a sample of the output.
 
 ![Alt](./images/uiDATETIME.jpg "Added Hour Selections Web View")
 
