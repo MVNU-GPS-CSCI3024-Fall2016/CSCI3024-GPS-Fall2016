@@ -32,11 +32,13 @@ necessarily represented.
 
 ### 1.2 Scope  
 The scope of this document is to describe the architecture of the system that will augment the Solar Data Live
-website, Solar Data Savings. 
+website, Solar Data Savings.  
 
 ### 1.3 Definitions 
-**Margin of Error:**  Margin of error is calculated based on available versus expected data.  In calculating energy saved the database could be missing readings for a variety of reasons.  This will have a negative effect on the accuracy of the calculated savings.  For instance, if there should be 100 readings in a time period, and there are only 97 in the database, this will result in a 3% margin of error. Because this margin of error results from missing data points, it is strictly positive, meaning that savings can only be higher than the listed output.
-___________________
+**Margin of Error:**  Margin of error is calculated based on available versus expected data.  In calculating energy saved the database could be 
+missing readings for a variety of reasons.  This will have a negative effect on the accuracy of the calculated savings.  For instance, if 
+there should be 100 readings in a time period, and there are only 97 in the database, this will result in a 3% margin of error. Because this 
+margin of error results from missing data points, it is strictly positive, meaning that savings can only be higher than the listed output.  
 
 ### 1.4 References  
 [Node.js](https://nodejs.org/en/)  
@@ -52,7 +54,7 @@ ___________________
 ### 2.1 Technical Platform  
 The solar data project utilizes data stored in a MySQL database that is hosted on a Linux server also running a server program in Node.js. 
 The user interface for this application will be a web page built with HTML5, Javascript, and Twitter Bootstrap. Batch jobs will also be
-created on a job server to pre-cache data for use by the web application.    
+created on a job server to pre-cache data for use by the web application.  
 
 ### 2.2 Security  
 Although no personal data is collected, measures will be taken to sanitize inputs to the system to prevent malicious access.
@@ -101,17 +103,20 @@ criteria, then the system will perform the calculations needed to display the sa
 <br/> 
 
 ## 6. Pre-Caching Activity View  
-The pre-caching process is a batch job that runs at the end of each day. It collects data for that day, separates it by bank and hour, totals the energy collected, and adds an collection entry for that date, bank, and hour to a table. Our program will then query this table and simply sum the results. This reduces the number of entries our program has to search to 1 entry for each 180 entries in the original data table.  
+The pre-caching process is a batch job that runs at the end of each day. It collects data for that day, separates it by bank and hour, totals the energy collected, 
+and adds an collection entry for that date, bank, and hour to a table. Our program will then query this table and simply sum the results. This reduces the number 
+of entries our program has to search to 1 entry for each 180 entries in the original data table.  
 <br/>
 ![Alt](./images/Pre-Caching_Activity_Architecture.png "Pre-Caching Batch Job Activity Architecture")
 <br/>
 
 ## 7. UI Mockup  
-The default web page will display with the date radio button selected with the date fields and price per kilowatt inputs showing. The user will select a location and then enter the dates they wish to process as well as the cost they are basing this off of.  
+The default web page will display with the date radio button selected with the date fields and price per kilowatt inputs showing. The user will select a location 
+and then enter the dates they wish to process as well as the cost they are basing this off of.  
 
 ![Alt](./images/uiDATEONLY.jpg "Default Web View")
 
-If the date and hour radio is selected, the added time inputs will be displayed. The following view shows the added time fields and a sample of the output.
+If the date and hour radio is selected, the added time inputs will be displayed. The following view shows the added time fields and a sample of the output.  
 
 ![Alt](./images/uiDATETIME.jpg "Added Hour Selections Web View")
 
