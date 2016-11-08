@@ -17,7 +17,7 @@
 3. [Logical Architecture View](#3-logical-architecture-view)  
 4. [Data Model View](#4-data-model-view)  
 5. [Activity View](#5-activity-view)  
-6. [Pre-Caching Statechart](#6-pre-caching-statechart-view)  
+6. [Pre-Caching Activity View](#6-pre-caching-activity-view)  
 7. [UI Mockup](#7-ui-mockup)  
 <br/>
 
@@ -100,8 +100,11 @@ criteria, then the system will perform the calculations needed to display the sa
 ![Alt](./images/Activity_Architecture.png "Solar Data Web Application Activity Architecture")  
 <br/> 
 
-## 6. Pre-Caching Statechart View  
-Nic  
+## 6. Pre-Caching Activity View  
+The pre-caching process is a batch job that runs at the end of each day. It collects data for that day, separates it by bank and hour, totals the energy collected, and adds an collection entry for that date, bank, and hour to a table. Our program will then query this table and simply sum the results. This reduces the number of entries our program has to search to 1 entry for each 180 entries in the original data table.  
+<br/>
+![Alt](./images/Pre-Caching_Activity_Architecture.png "Pre-Caching Batch Job Activity Architecture")
+<br/>
 
 ## 7. UI Mockup  
 The default web page will display with the date radio button selected with the date fields and price per kilowatt inputs showing. The user will select a location and then enter the dates they wish to process as well as the cost they are basing this off of.  
