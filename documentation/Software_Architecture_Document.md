@@ -103,4 +103,11 @@ criteria, then the system will perform the calculations needed to display the sa
 Nic  
 
 ## 7. UI Mockup  
-Jay  
+The default web page will display with the date radio button selected with the date fields and price per kilowatt inputs showing. The user will select a location and then enter the dates they wish to process as well as the cost they are basing this off of.  
+
+![Alt](./images/uiDATEONLY.jpg "Default Web View")
+
+If the date and hour radio is selected, the added time inputs will be displayed.
+
+![Alt](./images/uiDATETIME.jpg "Added Hour Selections Web View")
+
