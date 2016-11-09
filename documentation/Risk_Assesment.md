@@ -12,10 +12,10 @@
 | Underestimation                   |  Estimation           |  High         |  Severe        |  30      |  Team-Driven Timeline, Agile Group Estimations | All |
 
 ### Risk Score Key
-| Probability| Score |  Severity  | Score |
-|------------|-------|------------|-------|
-| Low        | 1     | Tolerable  | 5     |
-| Moderate   | 2     | Severe     | 10    |
-| High       | 1     | High       | 15    |
+| Probability| Score |  Severity    | Score |
+|------------|-------|--------------|-------|
+| Low        | 1     | Tolerable    | 5     |
+| Moderate   | 2     | Severe       | 10    |
+| High       | 3     | Catastrophic | 15    |
 
 
