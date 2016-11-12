@@ -21,4 +21,14 @@
 ### External Resources
 [Dr. Skon's Solar Live Data](http://jimskon.com/solar/Solar.html "Belize Solar Data Summary")
 
-[Belize Energy Rates](http://www.bel.com.bz/Rate_Schedule.aspx "Belize Energy Rates")
+[Belize Energy Rates](http://www.bel.com.bz/Rate_Schedule.aspx "Belize Energy Rates")  
+
+## Setting up the Development Environment  
+This project is built using Node.js. Styling is done with Twitter Bootstrap, and the application
+connects to a MySQL database.  
+
+#### Setting up Node  
+First, navigate to the [Node.js website](https://nodejs.org/en/) and download Node.js 6.9.1. This is the runtime used to develop
+the application.  
+
+
