@@ -31,4 +31,9 @@ connects to a MySQL database.
 First, navigate to the [Node.js website](https://nodejs.org/en/) and download Node.js 6.9.1. This is the runtime used to develop
 the application.  
 
+#### Setting up MySQL Server  
+For local database development, use [MySQL Community Server](http://dev.mysql.com/downloads/mysql/).  
 
+#### Recommended Toolset
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [MySQL Workbench](http://www.mysql.com/products/workbench/)

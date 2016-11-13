@@ -1,0 +1,7 @@
+# Directories and files not to be committed to the Solar Data Project repository
+
+# Top level Node Modules for express generator
+/node_modules/
+
+# Package JSON for express generator
+package.json
