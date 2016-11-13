@@ -5,3 +5,6 @@
 
 # Package JSON for express generator
 package.json
+
+# Applicable VS Code files that should remain local
+/.vscode/
