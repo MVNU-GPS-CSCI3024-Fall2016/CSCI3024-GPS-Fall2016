@@ -3,3 +3,7 @@ extends layout
 block content
   h1= title
   p This is the #{title} project website
+  select(id="locations")
+    -for(var i = 0; i < locations.length; i++) {
+      option(value="location_#{i + 1}") #{locations[i].dataValues.locationName}
+    -}
