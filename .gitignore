@@ -5,6 +5,7 @@
 
 # Applicable VS Code files that should remain local
 /.vscode/
+launch.json
 
 # Build config for local connections
 /solar-data-savings/build.config.js
