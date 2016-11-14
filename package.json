@@ -1,0 +1,19 @@
+{
+  "name": "solar-data-savings",
+  "version": "1.0.0",
+  "description": "MVNU Solar panel savings project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016.git"
+  },
+  "author": "Nic Isley, Jay Myser, Jeremy Hendricks, Wade Gooch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016/issues"
+  },
+  "homepage": "https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016#readme"
+}

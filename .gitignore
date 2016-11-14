@@ -3,8 +3,8 @@
 # Top level Node Modules for express generator
 /node_modules/
 
-# Package JSON for express generator
-package.json
-
 # Applicable VS Code files that should remain local
 /.vscode/
+
+# Build config for local connections
+/solar-data-savings/build.config.js

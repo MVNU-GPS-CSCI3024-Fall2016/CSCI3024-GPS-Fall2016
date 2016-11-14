@@ -11,6 +11,7 @@ if (process.env.DATABASE_URL) {
   var sequelize = new Sequelize(config.database, config.username, config.password, {
       port: config.port,
       host: config.host,
+      // COMMENT THE LOGGING IN PRODUCTION
       logging: console.log,
       define: {
         freezeTableName: true,
