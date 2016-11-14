@@ -34,7 +34,8 @@ necessarily represented.
 The scope of this document is to describe the architecture of the system that will augment the Solar Data Live
 website, Solar Data Savings.  
 
-### 1.3 Definitions 
+### 1.3 Definitions  
+**Object Relational Mapping (ORM):** This is the technique used to map entities in the database to object in the server-side logic.  
 **Margin of Error:**  Margin of error is calculated based on available versus expected data.  In calculating energy saved the database could be 
 missing readings for a variety of reasons.  This will have a negative effect on the accuracy of the calculated savings.  For instance, if 
 there should be 100 readings in a time period, and there are only 97 in the database, this will result in a 3% margin of error. Because this 
@@ -43,6 +44,8 @@ margin of error results from missing data points, it is strictly positive, meani
 ### 1.4 References  
 [Node.js](https://nodejs.org/en/)  
 [Express framework](http://expressjs.com/)  
+[Pug (formerly Jade)](https://pugjs.org/api/getting-started.html)  
+[Sequelize (ORM tool)](http://docs.sequelizejs.com/en/v3/)  
 [Twitter Bootstrap](http://getbootstrap.com/)  
 
 ### 1.5 Overview  
