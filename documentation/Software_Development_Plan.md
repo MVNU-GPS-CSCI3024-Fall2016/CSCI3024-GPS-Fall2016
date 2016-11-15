@@ -3,7 +3,7 @@
 ## 1. Plan Introduction and Overview.  
 ### 1.1 Purpose, Scope, and Objectives  
 The purpose of this plan is to produce a step by step process to produce the product described in the [Software Architecture Document](./Software_Architecture_Document.md). 
-The scope is limited as outlined in the [Project Requirements Document](./Solar_Data_Project_Requirements.md). Objective is to successfully complete the deliverables on time.  
+The scope is limited as outlined in the Project Requirements Document. Objective is to successfully complete the deliverables on time.  
 
 ### 1.2 Assumptions and Constraints   
 We assume that we will have access to a fully functional test environment as needed. We also assume that integration will be successful 
@@ -11,7 +11,7 @@ using tools we have previously cleared with the client. Primary constraint is ac
 
 ## 2. Referenced documents.  
 * [Software Architecture Document](./Software_Architecture_Document.md)  
-* [Project Requirements Document](./Solar_Data_Project_Requirements.md)   
+* Project Requirements Document  
 
 ## 4. Identification of all software and software products to which the SDP applies  
 * Node.js  
@@ -42,7 +42,7 @@ See the [Software Architecture Document](./Software_Architecture_Document.md)
 * New web interface  
 
 ### 7.3 Requirements and constraints on project documentation  
-[Project Requirements Document](./Solar_Data_Project_Requirements.md), [Project User Story Document](./Solar_Data_User_Story.md), 
+Project Requirements Document, [Project User Story Document](./Solar_Data_Project_User_Story.md), 
 [Software Architecture Document](./Software_Architecture_Document.md), this Software Development Plan, and a Software Test Plan.  
 *Constraints:* Team and client approval as appropriate.  
 
