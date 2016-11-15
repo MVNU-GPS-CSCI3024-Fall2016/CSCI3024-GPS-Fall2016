@@ -1,7 +1,7 @@
 # Directories and files not to be committed to the Solar Data Project repository
 
-# Top level Node Modules for express generator
-/node_modules/
+# Ignore locally installed Node modules
+node_modules
 
 # Applicable VS Code files that should remain local
 /.vscode/
