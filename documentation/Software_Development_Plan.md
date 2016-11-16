@@ -20,7 +20,7 @@ using tools we have previously cleared with the client. Primary constraint is ac
 * Mocha  
 * MySQL  
 
-## 5. Definition of terms and acronyms.  
+## 5. Definition of terms and acronyms  
   
 ## 6. System Overview, including system and software architecture  
 See the [Software Architecture Document](./Software_Architecture_Document.md)  
@@ -33,7 +33,7 @@ See the [Software Architecture Document](./Software_Architecture_Document.md)
 * Pre-existing website   
 
 **Constraints:**  
-* Do not user Ruby for server side logic  
+* Do not use Ruby for server side logic  
 * Do not use the Angular framework for the front end  
 
 ### 7.2 Software products and related deliverables  
