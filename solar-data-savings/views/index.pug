@@ -1,9 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p This is the #{title} project website
-  select(id="locations")
-    -for(var i = 0; i < locations.length; i++) {
-      option(value="location_#{i + 1}") #{locations[i].dataValues.locationName}
-    -}
+  div(class="container-fluid")
+    h1= title
+    p This is the #{title} project website
+    div(class="form-group")
+      label(for="locations")
+      div(class="col-sm-4")
+        select(id="locations" class="form-control")
+          -for(var i = 0; i < locations.length; i++) {
+            option(value="location_#{i + 1}") #{locations[i].dataValues.locationName}
+          -}
