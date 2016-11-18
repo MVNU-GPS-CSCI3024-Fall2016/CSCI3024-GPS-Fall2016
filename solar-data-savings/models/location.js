@@ -7,6 +7,13 @@ module.exports = function(sequelize, DataTypes) {
         initializationDate: DataTypes.DATE,
         latitude: DataTypes.DECIMAL(8, 6),
         longitude: DataTypes.DECIMAL(9, 6)
+    }, 
+    {
+        instanceMethods: {
+            getLocationName: function() {
+                return this.dataValues.locationName;
+            }
+        }
     });
 
     return Location;
