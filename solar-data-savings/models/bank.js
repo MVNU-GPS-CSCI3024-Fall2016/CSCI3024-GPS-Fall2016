@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
         locationID: DataTypes.INTEGER
     });
 
-    Bank.belongsTo(Location, {foreignKey: 'locationID'})
+    Bank.hasMany(AnswersHourly, {as: 'BankAnswersHourly'});
 
     return Bank;
 };

@@ -9,7 +9,5 @@ module.exports = function(sequelize, DataTypes) {
         processdate: DataTypes.DATE
     });
 
-    AnswersHourly.belongsTo(Bank, {foreignKey: 'bankID'})
-
     return AnswersHourly;
 };
