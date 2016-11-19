@@ -2,11 +2,12 @@
 
 module.exports = function(sequelize, DataTypes) {
     var AnswersHourly = sequelize.define("AnswersHourly", {
-        answershourlyID: { type: DataTypes.INTEGER, primaryKey: true },
+        answersHourlyID: { type: DataTypes.INTEGER, primaryKey: true },
         bankID: DataTypes.STRING,
-        wattsperhour: DataTypes.INTEGER,
-        answerdate: DataTypes.DATE,
-        processdate: DataTypes.DATE
+        wattsPerHour: DataTypes.INTEGER,
+        answerQuantity: DataTypes.INTEGER,
+        answerDate: DataTypes.DATE,
+        processDate: DataTypes.DATE
     });
 
     return AnswersHourly;

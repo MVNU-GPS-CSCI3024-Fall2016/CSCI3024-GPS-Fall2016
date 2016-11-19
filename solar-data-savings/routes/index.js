@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 
+router.use('/savings', require('./savings.js'));
+
 /* GET home page with locations and their initial data collection dates */
 router.get('/', function(req, res, next) {
   models.Location.findAll({

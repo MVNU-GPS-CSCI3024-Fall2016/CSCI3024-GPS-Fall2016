@@ -9,5 +9,7 @@ block content
       div(class="col-sm-4")
         select(id="locations" class="form-control")
           -for(var i = 0; i < locations.length; i++) {
-            option(value="location_#{i + 1}") #{locations[i].getLocationName()}
+            option(value="#{locations[i].dataValues.locationID") #{locations[i].getLocationName()}
           -}
+      div(class="col-sm-4")
+        a(href="./savings") Get Bank

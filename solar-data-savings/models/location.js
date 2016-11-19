@@ -16,7 +16,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Location.hasMany(Bank, {as: 'LocationBanks'});
-
     return Location;
 };
