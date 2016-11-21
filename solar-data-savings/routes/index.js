@@ -7,7 +7,7 @@ router.use('/savings', require('./savings.js'));
 /* GET home page with locations and their initial data collection dates */
 router.get('/', function(req, res, next) {
   models.Location.findAll({
-    attributes: ['locationName', 'initializationDate']
+    attributes: ['locationID', 'locationName', 'initializationDate']
   }).then(function(locations) {
     res.render('index', { 
       title: 'Solar Data Savings',

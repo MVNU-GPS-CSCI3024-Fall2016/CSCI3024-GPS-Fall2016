@@ -4,12 +4,13 @@ var models = require('../models');
 
 /* GET calculate solar data savings and reroute */
 router.get('/', function(req, res, next) {
-  req.param('locationID');
+  var locationID = req.query.locationID;
   models.Bank.findAll({
     attributes: ['bankID'],
-    include: [{
-        model: models.Location,
-        where: { locationID: Sequelize.col('bank.locationID') }
+    include: [{ 
+      model: models.Location,
+      attributes: [],
+      where: {locationID: locationID} 
     }]
   }).then(function(banks) {
     res.render('index', { 

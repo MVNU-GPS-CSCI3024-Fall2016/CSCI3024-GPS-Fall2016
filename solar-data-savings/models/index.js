@@ -8,6 +8,7 @@ var config    = require(path.join(__dirname, '../build.config.js'))[env];
 if (process.env.DATABASE_URL) {
   var sequelize = new Sequelize(process.env.DATABASE_URL);
 } else {
+  // Construct sequelize object for database connection
   var sequelize = new Sequelize(config.database, config.username, config.password, {
       port: config.port,
       host: config.host,

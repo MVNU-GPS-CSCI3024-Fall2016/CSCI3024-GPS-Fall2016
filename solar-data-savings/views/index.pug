@@ -5,11 +5,19 @@ block content
     h1= title
     p This is the #{title} project website
     div(class="form-group")
+      -if (locations != null) {
       label(for="locations")
       div(class="col-sm-4")
         select(id="locations" class="form-control")
           -for(var i = 0; i < locations.length; i++) {
-            option(value="#{locations[i].dataValues.locationID") #{locations[i].getLocationName()}
+            -var locationID = locations[i].getLocationID();
+            option(value=locationID) #{locations[i].getLocationName()}
           -}
+        -}
       div(class="col-sm-4")
-        a(href="./savings") Get Bank
+        button(type="button" class="btn btn-default" onClick="getBank()") Get Bank
+        -if (banks != null) {
+          -for(var i = 0; i < banks.length; i++) {
+            p #{banks[i].dataValues.bankID}
+          -}
+        -}
