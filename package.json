@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "MVNU Solar panel savings project",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016.git"
@@ -16,8 +14,5 @@
     "url": "https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016/issues"
   },
   "homepage": "https://github.com/MVNU-GPS-CSCI3024-Fall2016/CSCI3024-GPS-Fall2016#readme",
-  "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.1.2"
-  }
+  "dependencies": {}
 }
