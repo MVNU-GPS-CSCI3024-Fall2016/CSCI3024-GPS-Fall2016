@@ -26,7 +26,7 @@ Pre:		System test plan
 In-class:		Team meeting: risk assessment, planning and implementation  
 
 Week 7 – 12/6  
-Pre:		System progress demo  
+Pre:		System progress demo (goal: complete and ready for testing)  
 		Risk assessment update  
 In-class:		Team meeting: risk assessment, planning and implementation  
 		Software failure presentation topic selector  
