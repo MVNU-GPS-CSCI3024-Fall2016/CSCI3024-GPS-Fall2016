@@ -30,6 +30,9 @@ connects to a MySQL database.
 #### Setting up Node  
 First, navigate to the [Node.js website](https://nodejs.org/en/) and download Node.js 6.9.1. This is the runtime used to develop
 the application.  
+<br/>
+After Node has been downloaded, open up the directory `.../CSCI3024-GPS-FALL2016/solar-data-savings` from the command line
+and run the command `npm install`. This will use the *package.json* file in that directory to install all source dependencies.  
 
 #### Configuring the environment  
 In the project, there is a build.config.js file. This file exports an object that contains server connection properties.  
