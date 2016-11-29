@@ -7,9 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     }, 
     {
         classMethods: {
+            /*
+            * Model Associations
+            */
             associate: function(models) {
+                /* Table: Location, Cardinality: 1:1 */
                 Bank.belongsTo(models.Location, {foreignKey: 'locationID'});
-                Bank.hasMany(models.AnswersHourly);
+                /* Table: AnswersHourly, Cardinality: 1:M */
+                Bank.hasMany(models.AnswersHourly, {foreignKey: 'bankID'});
             }
         }
     });

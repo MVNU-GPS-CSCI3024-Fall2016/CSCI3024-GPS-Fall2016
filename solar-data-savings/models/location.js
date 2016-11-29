@@ -9,17 +9,31 @@ module.exports = function(sequelize, DataTypes) {
         longitude: DataTypes.DECIMAL(9, 6)
     }, 
     {
+        classMethods: {
+            /*
+            * Model Associations
+            */
+            associate: function(models) {
+                /* Table: BANK, Cardinality: 1:M */
+                Location.hasMany(models.Bank, {foreignKey: 'locationID'});
+            },
+            /*
+            * Query: Find All Locations
+            * Fields: LocationID, LocationName, InitializationDate
+            */
+            findAllLocations: function() {
+                return this.findAll({
+                    attributes: ['locationID', 'locationName', 'initializationDate']
+                });
+            }
+        },
+
         instanceMethods: {
             getLocationID: function() {
                 return this.dataValues.locationID;
             },
             getLocationName: function() {
                 return this.dataValues.locationName;
-            }
-        },
-        classMethods: {
-            associate: function(models) {
-                Location.hasMany(models.Bank);
             }
         }
     });

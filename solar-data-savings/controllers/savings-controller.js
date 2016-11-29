@@ -2,18 +2,14 @@
 
 module.exports = function(models) {
     var getSavings = function(req, res, next) {
-        var locationID = req.query.locationID;
-        models.Bank.findAll({
-            attributes: ['bankID'],
-            include: [{ 
-            model: models.Location,
-            attributes: [],
-            where: {locationID: locationID} 
-            }]
-        }).then(function(banks) {
+        var locationID = req.query.locationID,
+            startDate = req.query.startDate,
+            endDate = req.query.endDate;
+        models.AnswersHourly.findAnswersHourlyByDate(models, locationID, startDate, endDate)
+        .then(function(answersHourly) {
             res.render('index', { 
-            title: 'Solar Data Savings',
-            banks: banks
+                title: 'Solar Data Savings',
+                answersHourly: answersHourly
             });
         });
     };

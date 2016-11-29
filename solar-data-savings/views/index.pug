@@ -8,16 +8,25 @@ block content
       -if (locations != null) {
       label(for="locations")
       div(class="col-sm-4")
-        select(id="locations" class="form-control")
+        select(id="locations" class="form-control" name="locations")
           -for(var i = 0; i < locations.length; i++) {
             -var locationID = locations[i].getLocationID();
             option(value=locationID) #{locations[i].getLocationName()}
           -}
         -}
-      div(class="col-sm-4")
-        button(type="button" class="btn btn-default" onClick="getBank()") Get Bank
-        -if (banks != null) {
-          -for(var i = 0; i < banks.length; i++) {
-            p #{banks[i].dataValues.bankID}
+      div(class="col-sm-6")
+        p Get Answers for the most recent day
+        button(type="button" class="btn btn-default" onClick="getAnswersHourly()") Go!
+        -if (answersHourly != null) {
+          -for(var i = 0; i < answersHourly.length; i++) {
+            -var ah = answersHourly[i].getAnswerHourly();
+            p 
+              | #{ah.Location.locationName} <br>
+              | Bank ID: #{ah.Bank.bankID} <br>
+              | Answer Quantity: #{ah.answerQuantity} <br>
+              | Watts Per Hour: #{ah.wattsPerHour} <br> 
+              | Latitude: #{ah.Location.latitude} <br>
+              | Longitude: #{ah.Location.longitude} <br>
+              | ______________________________________
           -}
         -}
