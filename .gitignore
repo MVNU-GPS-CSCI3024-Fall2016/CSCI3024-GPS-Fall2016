@@ -1,4 +1,6 @@
 # Directories and files not to be committed to the Solar Data Project repository
+# Ignore .DS_Store (mac only file that holds folder view data) so Jay doesn't polute repo
+.DS_Store
 
 # Ignore locally installed Node modules
 node_modules
