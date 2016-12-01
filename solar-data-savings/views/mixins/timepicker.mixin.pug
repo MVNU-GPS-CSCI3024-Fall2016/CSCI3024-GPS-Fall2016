@@ -1,0 +1,11 @@
+mixin timepicker(name)
+  -
+    var hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        meridians = ['AM', 'PM'];
+
+  select(id=name class='form-control timepicker' name=name disabled)
+    each hour in hours
+      option(value=hour) #{hour}
+  select(id=name+'Meridian' class='form-control timepicker' name=name+'Meridian' disabled)
+    each meridian in meridians
+      option(value=meridian) #{meridian}

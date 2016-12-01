@@ -1,0 +1,12 @@
+mixin datepicker(name)
+  input(type='text' class='form-control datepicker' name=name id=name placeholder='mm/dd/yyyy')
+  span(class='input-group-addon')
+    i(class='glyphicon glyphicon-th')
+  script.
+    var date = new Date()
+    date = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+    $('.datepicker').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      endDate: date
+    });

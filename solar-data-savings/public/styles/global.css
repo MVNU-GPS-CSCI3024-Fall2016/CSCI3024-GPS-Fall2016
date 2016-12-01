@@ -10,3 +10,7 @@
 .pad-left-0 {
     padding-left: 0px !important;
 }
+
+.time-container {
+    display: none;
+}

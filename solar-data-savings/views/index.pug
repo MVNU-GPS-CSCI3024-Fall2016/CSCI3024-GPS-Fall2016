@@ -1,4 +1,6 @@
 extends layout
+include mixins/datepicker.mixin.pug
+include mixins/timepicker.mixin.pug
 
 block content
   div(class='container-fluid')
@@ -17,37 +19,29 @@ block content
           b Process data by: 
         div(class='col-sm-8 margin-bottom-20 pad-left-0')
           label(for='date' class='radio-inline')
-            input(type='radio' name='dateTime' value='date' checked='true')
+            input(type='radio' id='date' name='dateTime' value='date' checked='true' onChange='displayTimepickers(false)')
             | Date
           label(for='dateTime' class='radio-inline')
-            input(type='radio' name='dateTime' value='datetime')
+            input(type='radio' id='dateTime' name='dateTime' value='datetime' onChange='displayTimepickers(true)')
             | Date & Time
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
-          div(class='col-sm-6')
+          div(class='col-sm-4')
             label(for='startDate') Start Date
             div(class='input-group date')
-              input(type='text' class='form-control datepicker' name='startDate' placeholder='mm/dd/yyyy')
-              span(class='input-group-addon')
-                i(class='glyphicon glyphicon-th')
+              +datepicker('startDate')
+          div(class='col-sm-4 time-container')
+            label(for='startTime') Start Time
+            +timepicker('startTime')
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
-          div(class='col-sm-6')
+          div(class='col-sm-4')
             label(for='endDate') End Date
             div(class='input-group date')
-              input(type='text' class='form-control datepicker' name='endDate' placeholder='mm/dd/yyyy')
-              span(class='input-group-addon')
-                i(class='glyphicon glyphicon-th')
-      script.
-        var date = new Date();
-        date = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
-        $('.datepicker').each(function() {
-          $(this).datepicker({
-            autoclose: true,
-            todayHighlight: true,
-            endDate: date
-          });
-        });
+              +datepicker('endDate')
+          div(class='col-sm-4 time-container')
+            label(for='endTime') End Time
+            +timepicker('endTime')
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
           div(class='col-sm-5')
