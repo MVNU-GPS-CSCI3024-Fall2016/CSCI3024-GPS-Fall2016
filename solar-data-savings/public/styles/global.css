@@ -1,0 +1,12 @@
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.pad-left-0 {
+    padding-left: 0px !important;
+}

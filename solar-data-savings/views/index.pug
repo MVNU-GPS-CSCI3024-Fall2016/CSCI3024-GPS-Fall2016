@@ -1,32 +1,63 @@
 extends layout
 
 block content
-  div(class="container-fluid")
-    h1= title
-    p This is the #{title} project website
-    div(class="form-group")
-      -if (locations != null) {
-      label(for="locations")
-      div(class="col-sm-4")
-        select(id="locations" class="form-control" name="locations")
-          -for(var i = 0; i < locations.length; i++) {
-            -var locationID = locations[i].getLocationID();
-            option(value=locationID) #{locations[i].getLocationName()}
-          -}
-        -}
-      div(class="col-sm-6")
-        p Get Answers for the most recent day
-        button(type="button" class="btn btn-default" onClick="getAnswersHourly()") Go!
-        -if (answersHourly != null) {
-          -for(var i = 0; i < answersHourly.length; i++) {
-            -var ah = answersHourly[i].getAnswerHourly();
-            p 
-              | #{ah.Location.locationName} <br>
-              | Bank ID: #{ah.Bank.bankID} <br>
-              | Answer Quantity: #{ah.answerQuantity} <br>
-              | Watts Per Hour: #{ah.wattsPerHour} <br> 
-              | Latitude: #{ah.Location.latitude} <br>
-              | Longitude: #{ah.Location.longitude} <br>
-              | ______________________________________
-          -}
-        -}
+  div(class='container-fluid')
+    div(class='col-sm-12 margin-bottom-20')
+      h1= title
+    div(class='col-md-6 col-sm-12')
+      div(class='form-group col-sm-12')
+        unless locations == null
+        div(class='col-sm-7 margin-bottom-20')
+          label(for='locations') Select a Location
+          select(id='locations' class='form-control' name='locations')
+            each location in locations
+              option(value=locationID) #{location.getLocationName()}
+      div(class='form-group col-sm-12')
+        div(class='col-sm-4')
+          b Process data by: 
+        div(class='col-sm-8 margin-bottom-20 pad-left-0')
+          label(for='date' class='radio-inline')
+            input(type='radio' name='dateTime' value='date' checked='true')
+            | Date
+          label(for='dateTime' class='radio-inline')
+            input(type='radio' name='dateTime' value='datetime')
+            | Date & Time
+      div(class='form-group')
+        div(class='col-sm-12 margin-bottom-20')
+          div(class='col-sm-6')
+            label(for='startDate') Start Date
+            div(class='input-group date')
+              input(type='text' class='form-control datepicker' name='startDate' placeholder='mm/dd/yyyy')
+              span(class='input-group-addon')
+                i(class='glyphicon glyphicon-th')
+      div(class='form-group')
+        div(class='col-sm-12 margin-bottom-20')
+          div(class='col-sm-6')
+            label(for='endDate') End Date
+            div(class='input-group date')
+              input(type='text' class='form-control datepicker' name='endDate' placeholder='mm/dd/yyyy')
+              span(class='input-group-addon')
+                i(class='glyphicon glyphicon-th')
+      script.
+        var date = new Date();
+        date = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+        $('.datepicker').each(function() {
+          $(this).datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            endDate: date
+          });
+        });
+      div(class='form-group')
+        div(class='col-sm-12 margin-bottom-20')
+          div(class='col-sm-5')
+            label(for='kwhCost') Enter kWh Cost
+            div(class='input-group')
+              span(class='input-group-addon') $
+              input(type='number' min=0 class='form-control' name='kwhCost')
+      div(class='form-group')
+        div(class='col-sm-12')
+          div(class='col-sm-4')
+            button(class='btn btn-default' onClick='getAnswersHourlySavings()') Submit
+    div(class='col-sm-6')
+      block content
