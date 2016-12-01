@@ -30,7 +30,7 @@ We plan to use Mocha to generate unit tests to test primarily for error results.
 actually contact the MySQL database is unlikely to be useful, so error testing is the only thing we will automate.  
 
 ### 5. Test Environment  
-We are establishing a test environment on the MVNU CS server that is as close as we can get to Dr. Skon's live server so that we can test on a Linux server, 
+We have a test server provided by Dr. Kasper that is a cloned copy of Dr. Skon's live server so that we can test on a Linux server, 
 but individual developer testing will take place on local environments.  
 
 ### 6. Milestones/Deliverables  
