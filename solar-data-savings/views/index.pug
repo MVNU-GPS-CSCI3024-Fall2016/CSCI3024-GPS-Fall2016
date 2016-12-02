@@ -1,6 +1,7 @@
 extends layout
 include mixins/datepicker.mixin.pug
 include mixins/timepicker.mixin.pug
+include mixins/meridian.mixin.pug
 
 block content
   div(class='container-fluid')
@@ -9,15 +10,21 @@ block content
     div(class='col-md-6 col-sm-12')
       div(class='form-group col-sm-12')
         unless locations == null
-        div(class='col-sm-7 margin-bottom-20')
+        div(class='col-sm-7')
           label(for='locations') Select a Location
-          select(id='locations' class='form-control' name='locations')
+          select(id='locations' class='form-control' name='locations' onChange='updateInitDateMessage()')
             each location in locations
-              option(value=locationID) #{location.getLocationName()}
+              option(value=location.getLocationID() data-init-date=location.getInitDateString()) #{location.getLocationName()}
+      div(class='form-group col-sm-12')
+        div(class='col-sm-12')
+          p(id='init-date-message')
+            script.
+              var thisOption = $('#locations option:selected').attr('data-init-date');
+              $('#init-date-message').text('*Earliest date of data collection for location: ' + thisOption);
       div(class='form-group col-sm-12')
         div(class='col-sm-4')
           b Process data by: 
-        div(class='col-sm-8 margin-bottom-20 pad-left-0')
+        div(class='col-sm-8 margin-bottom-10 pad-left-0')
           label(for='date' class='radio-inline')
             input(type='radio' id='date' name='dateTime' value='date' checked='true' onChange='displayTimepickers(false)')
             | Date
@@ -30,21 +37,25 @@ block content
             label(for='startDate') Start Date
             div(class='input-group date')
               +datepicker('startDate')
-          div(class='col-sm-4 time-container')
+          div(class='col-sm-3 time-container')
             label(for='startTime') Start Time
             +timepicker('startTime')
+          div(class='col-sm-2 time-container pad-left-0')
+            +meridian('startTimeMeridian')
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
           div(class='col-sm-4')
             label(for='endDate') End Date
             div(class='input-group date')
               +datepicker('endDate')
-          div(class='col-sm-4 time-container')
+          div(class='col-sm-3 time-container')
             label(for='endTime') End Time
             +timepicker('endTime')
+          div(class='col-sm-2 time-container pad-left-0')
+            +meridian('endTimeMeridian')
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
-          div(class='col-sm-5')
+          div(class='col-sm-4')
             label(for='kwhCost') Enter kWh Cost
             div(class='input-group')
               span(class='input-group-addon') $

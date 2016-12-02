@@ -3,6 +3,10 @@
     margin: auto;
 }
 
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
@@ -13,4 +17,12 @@
 
 .time-container {
     display: none;
+}
+
+.init-date {
+    display: none;
+}
+
+#init-date-message {
+    font-style: italic;
 }

@@ -11,3 +11,8 @@ function displayTimepickers(isDateTime) {
         $('.timepicker').attr('disabled', 'disabled');
     }
 }
+
+function updateInitDateMessage() {
+    var thisOption = $('#locations option:selected').attr('data-init-date');
+    $('#init-date-message').text('*Earliest date of data collection for location: ' + thisOption);
+}
