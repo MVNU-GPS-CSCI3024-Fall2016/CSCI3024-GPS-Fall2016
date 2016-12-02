@@ -41,6 +41,14 @@ And I enter an end date that is before the start date
 When I click submit  
 Then an error message will display saying "Please enter a valid date range"  
 
+**Scenario: Attempt to search with end date the same as start date while search option date only is selected**  
+Given that I am a user on the website  
+And I select the date only search option  
+And I enter a start date  
+And I enter an end date that is the same as the start date  
+When I click submit  
+Then an error message will display saying "You must search for different days or use the Date/Time search option"  
+
 **Scenario: Attempt to search with end date after current date**  
 Given that I am a user on the website  
 And I enter a start date  
