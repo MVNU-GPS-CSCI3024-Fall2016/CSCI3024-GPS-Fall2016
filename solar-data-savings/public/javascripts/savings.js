@@ -1,8 +1,9 @@
-function getAnswersHourlySavings(initDate) {
+function getAnswersHourlySavings() {
     var query = {};
     query.locationID = $('#locations option:selected').attr('value');
     query.kwh = $('#kwhCost').val();
-    var startDate = $('#startDate').val(),
+    var initDate = new Date($('#locations option:selected').attr('data-init-date')),
+        startDate = $('#startDate').val(),
         endDate = $('#endDate').val(),
         startTime = 0,
         endTime = 0;
@@ -23,10 +24,12 @@ function getAnswersHourlySavings(initDate) {
         console.log(ex);
     }
     try {
-        validateQuery(query);
+        validateQuery(initDate, query);
         window.document.location += JSON.stringify(query);
     } catch(ex) {
-
+        $('#error-message').empty();
+        $('#error-message').text(ex);
+        $('#error-container').show();
     }
 }
 
@@ -37,15 +40,29 @@ function setMeridianTime(time, meridian) {
     return time;
 }
 
-function validateQuery(query) {
-    var isValid = true;
+function validateQuery(initDate, query) {
+    var errArray = [];
 
-    // if(isMinimumDate(query.startDateTime))
+    if(!isInitDate(initDate, query.startDateTime)) {
+        errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
+    }
     if(isValidDateRange(query.startDateTime, query.endDateTime)) {
 
     }
+
+    if(errArray.length > 0) {
+        throw errArray.join('\n');
+    }
+}
+
+function isInitDate(initDate, date) {
+    return date >= initDate;
 }
 
 function isValidDateRange(start, end) {
     return end > start;
+}
+
+function closeError() {
+    $('#error-container').hide();
 }

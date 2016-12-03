@@ -7,6 +7,11 @@ block content
   div(class='container-fluid')
     div(class='col-sm-12 margin-bottom-20')
       h1= title
+    div(class='col-sm-12 error-container' id='error-container')
+      div(class='alert alert-danger alert-dismissable')
+        button(type='button' class='close' aria-label='Close' onClick='closeError()')
+          span(aria-hidden='true') &times;
+        span(id='error-message')
     div(class='col-md-6 col-sm-12')
       div(class='form-group col-sm-12')
         unless locations == null

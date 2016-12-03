@@ -15,11 +15,7 @@
     padding-left: 0px !important;
 }
 
-.time-container {
-    display: none;
-}
-
-.init-date {
+.time-container, .error-container {
     display: none;
 }
 
