@@ -9,7 +9,7 @@ block content
       h1= title
     div(class='col-sm-12 error-container' id='error-container')
       div(class='alert alert-danger alert-dismissable')
-        button(type='button' class='close' aria-label='Close' onClick='closeError()')
+        button(type='button' class='close' aria-label='Close' onClick='index.closeError()')
           span(aria-hidden='true') &times;
         span(id='error-message')
     div(class='col-md-6 col-sm-12')
@@ -17,7 +17,7 @@ block content
         unless locations == null
         div(class='col-sm-7')
           label(for='locations') Select a Location
-          select(id='locations' class='form-control' name='locations' onChange='updateInitDateMessage()')
+          select(id='locations' class='form-control' name='locations' onChange='index.updateInitDateMessage()')
             each location in locations
               option(value=location.getLocationID() data-init-date=location.getInitDateString()) #{location.getLocationName()}
       div(class='form-group col-sm-12')
@@ -31,10 +31,10 @@ block content
           b Process data by: 
         div(class='col-sm-8 margin-bottom-10 pad-left-0')
           label(for='date' class='radio-inline')
-            input(type='radio' id='date' name='dateTime' value='date' checked='true' onChange='displayTimepickers(false)')
+            input(type='radio' id='date' name='dateTime' value='date' checked='true' onChange='index.displayTimepickers(false)')
             | Date
           label(for='dateTime' class='radio-inline')
-            input(type='radio' id='dateTime' name='dateTime' value='datetime' onChange='displayTimepickers(true)')
+            input(type='radio' id='dateTime' name='dateTime' value='datetime' onChange='index.displayTimepickers(true)')
             | Date & Time
       div(class='form-group')
         div(class='col-sm-12 margin-bottom-20')
@@ -68,6 +68,6 @@ block content
       div(class='form-group')
         div(class='col-sm-12')
           div(class='col-sm-4')
-            button(class='btn btn-default' onClick='getAnswersHourlySavings()') Submit
+            button(class='btn btn-default' onClick='savings.submitRequest()') Submit
     div(class='col-sm-6')
       block content

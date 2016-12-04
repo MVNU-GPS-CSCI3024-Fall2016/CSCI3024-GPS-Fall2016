@@ -1,4 +1,6 @@
-function getAnswersHourlySavings() {
+var Savings = function() {};
+
+Savings.prototype.submitRequest = function() {
     var query = {};
     query.locationID = $('#locations option:selected').attr('value');
     query.kwh = $('#kwhCost').val();
@@ -11,8 +13,8 @@ function getAnswersHourlySavings() {
     if ($('#dateTime').attr('checked', 'true')) {
         var startMeridian = $('#startTimeMeridian').val(),
             endMeridian = $('#endTimeMeridian').val();
-        startTime = setMeridianTime($('#startTime').val(), startMeridian);
-        endTime = setMeridianTime($('#endTime').val(), endMeridian);
+        startTime = this.setMeridianTime($('#startTime').val(), startMeridian);
+        endTime = this.setMeridianTime($('#endTime').val(), endMeridian);
     }
 
     try {
@@ -24,7 +26,7 @@ function getAnswersHourlySavings() {
         console.log(ex);
     }
     try {
-        validateQuery(initDate, query);
+        this.validateQuery(initDate, query);
         window.document.location += JSON.stringify(query);
     } catch(ex) {
         $('#error-message').empty();
@@ -33,20 +35,20 @@ function getAnswersHourlySavings() {
     }
 }
 
-function setMeridianTime(time, meridian) {
+Savings.prototype.setMeridianTime = function(time, meridian) {
     if(meridian === 'PM') {
         time += 12;
     }
     return time;
 }
 
-function validateQuery(initDate, query) {
+Savings.prototype.validateQuery = function(initDate, query) {
     var errArray = [];
 
-    if(!isInitDate(initDate, query.startDateTime)) {
+    if(!this.isInitDate(initDate, query.startDateTime)) {
         errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
     }
-    if(isValidDateRange(query.startDateTime, query.endDateTime)) {
+    if(!this.isValidDateRange(query.startDateTime, query.endDateTime)) {
 
     }
 
@@ -55,14 +57,15 @@ function validateQuery(initDate, query) {
     }
 }
 
-function isInitDate(initDate, date) {
+Savings.prototype.isInitDate = function(initDate, date) {
     return date >= initDate;
 }
 
-function isValidDateRange(start, end) {
+Savings.prototype.isValidDateRange = function(start, end) {
     return end > start;
 }
 
-function closeError() {
-    $('#error-container').hide();
-}
+var savings = new Savings();
+try {
+    module.exports = savings;
+} catch(ex) {};
