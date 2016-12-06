@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
             getAnswerHourly: function() {
                 var bank = this.dataValues.Bank.dataValues;
                 var location = bank.Location.dataValues;
-                return {
+                var answerHourly = {
                     answerQuantity: this.dataValues.answerQuantity,
                     wattsPerHour: this.dataValues.wattsPerHour,
                     Bank: {
@@ -61,8 +61,9 @@ module.exports = function(sequelize, DataTypes) {
                         locationName: location.locationName,
                         latitude: location.latitude,
                         longitude: location.longitude
-                    } 
+                    }
                 };
+                return answerHourly;
             }
         }
     });

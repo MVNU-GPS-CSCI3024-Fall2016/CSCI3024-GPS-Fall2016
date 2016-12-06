@@ -34,6 +34,11 @@ module.exports = function(sequelize, DataTypes) {
             },
             getLocationName: function() {
                 return this.dataValues.locationName;
+            },
+            getInitDateString: function() {
+                var initDate = new Date(this.dataValues.initializationDate);
+                var initDateString = initDate.getDay() + '/' + (initDate.getMonth()+1) + '/' + initDate.getFullYear();
+                return initDateString;
             }
         }
     });

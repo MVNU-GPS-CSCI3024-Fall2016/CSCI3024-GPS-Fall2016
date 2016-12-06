@@ -1,0 +1,6 @@
+mixin meridian(name)
+  - var meridians = ['AM', 'PM'];
+  label(for=name) AM/PM
+  select(id=name class='form-control timepicker' name=name disabled)
+    each meridian in meridians
+      option(value=meridian) #{meridian}
