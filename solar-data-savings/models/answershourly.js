@@ -65,6 +65,10 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 return answerHourly;
             }
+            getAnswerQuantity: function() {
+                var answerQuantity = this.dataValues.answerQuantity;
+                return answerQuantity;
+            }
         }
     });
 
