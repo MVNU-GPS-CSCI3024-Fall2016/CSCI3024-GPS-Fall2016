@@ -22,3 +22,12 @@
 #init-date-message {
     font-style: italic;
 }
+
+#savings-box {
+    background-color: #f8f8f8;
+    color: #848484;
+}
+
+p.marginExplanation {
+    font-size: .75em;
+}
