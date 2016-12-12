@@ -3,7 +3,7 @@ var Savings = function() {};
 Savings.prototype.submitRequest = function() {
     var query = {};
     query.locationID = $('#locations option:selected').attr('value');
-    query.kwh = $('#kwhCost').val();
+    query.kwhCost = $('#kwhCost').val();
 
     var initDate = new Date($('#locations option:selected').attr('data-init-date')),
         startDate = $('#startDate').val(),
@@ -11,7 +11,7 @@ Savings.prototype.submitRequest = function() {
         startTime = 0,
         endTime = 0;
 
-    if ($('#dateTime').attr('checked', 'true')) {
+    if ($('#dateTime').is('checked')) {
         var startMeridian = $('#startTimeMeridian').val(),
             endMeridian = $('#endTimeMeridian').val();
         startTime = this.setMeridianTime($('#startTime').val(), startMeridian);
@@ -24,16 +24,14 @@ Savings.prototype.submitRequest = function() {
         query.endDateTime = new Date(endDate);
         query.endDateTime.setHours(endTime);
     } catch(ex) {
-        console.log(ex);
+        this.showError(ex);
     }
-    
+
     try {
         this.validateQuery(initDate, query);
-        window.document.location += JSON.stringify(query);
+        window.document.location += 'savings?' + $.param(query);
     } catch(ex) {
-        $('#error-message').empty();
-        $('#error-message').text(ex);
-        $('#error-container').show();
+        this.showError(ex);
     }
 }
 
@@ -47,7 +45,7 @@ Savings.prototype.setMeridianTime = function(time, meridian) {
 Savings.prototype.validateQuery = function(initDate, query) {
     var errArray = [];
 
-    if(!this.isInitDate(initDate, query.startDateTime)) {
+    if(!this.isValidStartDate(initDate, query.startDateTime)) {
         errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
     }
     if(!this.isValidDateRange(query.startDateTime, query.endDateTime)) {
@@ -63,8 +61,8 @@ Savings.prototype.validateQuery = function(initDate, query) {
 }
 
 // Start date after initialization date
-Savings.prototype.isInitDate = function(initDate, date) {
-    return date >= initDate;
+Savings.prototype.isValidStartDate = function(initDate, startDate) {
+    return startDate >= initDate;
 }
 
 // End date after start date
@@ -80,7 +78,9 @@ Savings.prototype.isValidEndDate = function(endDate) {
 }
 
 Savings.prototype.showError = function(message) {
-
+    $('#error-message').empty();
+    $('#error-message').text(message);
+    $('#error-container').show();
 }
 
 var savings = new Savings();

@@ -26,17 +26,17 @@ module.exports = function(sequelize, DataTypes) {
             * Conditions: AnswersHourly.AnswerDate BETWEEN (startDate, endDate),
             *             Bank.LocationID = locationID
             */
-            findAnswersHourlyByDate: function(models, locationID, startDate, endDate) {
+            findAnswersHourlyByDate: function(models, params) {
                 return this.findAll({
                     attributes: ['wattsPerHour', 'answerQuantity'],
                     where: {
-                        answerDate: { $between: [startDate, endDate] }
+                        answerDate: { $between: [params.startDate, params.endDate] }
                     },
                     include: [{
                         model: models.Bank,
                         attributes: ['bankID'],
                         where: {
-                            locationID: locationID
+                            locationID: params.locationID
                         },
                         include: [{
                             model: models.Location,
@@ -45,8 +45,41 @@ module.exports = function(sequelize, DataTypes) {
                         }]
                     }]
                 });
+            },
+
+            validateParams: function(params) {
+                var errArray = [];
+
+                if(!this.isValidStartDate(initDate, params.startDate)) {
+                    errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
+                }
+                if(!this.isValidDateRange(params.startDate, params.endDate)) {
+                    errArray.push('Start date must preceed end date');
+                }
+                if(!this.isValidEndDate(params.endDate)) {
+                    errArray.push('End date cannot be later than midnight of current date');
+                }
+
+                if(errArray.length > 0) {
+                    throw errArray.join('\n');
+                }
+            },
+
+            isValidStartDate: function(initDate, date) {
+                return date >= initDate;
+            },
+
+            isValidDateRange: function(startDate, endDate) {
+                return endDate > startDate;
+            },
+
+            isValidEndDate: function(endDate) {
+                var date = new Date();
+                date.setHours(0);
+                return endDate <= date;
             }
         },
+
         instanceMethods: {
             getAnswerHourly: function() {
                 var bank = this.dataValues.Bank.dataValues;
@@ -65,6 +98,7 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 return answerHourly;
             },
+
             getAnswerQuantity: function() {
                 var answerQuantity = this.dataValues.answerQuantity;
                 return answerQuantity;

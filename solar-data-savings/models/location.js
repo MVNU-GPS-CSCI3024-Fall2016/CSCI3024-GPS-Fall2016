@@ -25,6 +25,18 @@ module.exports = function(sequelize, DataTypes) {
                 return this.findAll({
                     attributes: ['locationID', 'locationName', 'initializationDate']
                 });
+            },
+            /*
+            * Query: Find initialization date by location ID
+            * Fields: InitializationDate
+            */
+            findInitDateByID: function(locationID) {
+                return this.findAll({
+                    attributes: ['initializationDate'],
+                    where: {
+                        locationID: locationID
+                    }
+                });
             }
         },
 

@@ -64,11 +64,10 @@ block content
             label(for='kwhCost') Enter kWh Cost
             div(class='input-group')
               span(class='input-group-addon') $
-              input(type='number' min=0 class='form-control' name='kwhCost' value='.25')
+              input(id='kwhCost' type='number' min=0 class='form-control' name='kwhCost' value='.25')
       div(class='form-group')
         div(class='col-sm-12')
           div(class='col-sm-4')
             button(class='btn btn-default' onClick='savings.submitRequest()') Submit
     div(class='col-sm-6')
       block savings
-      //include savings.pug
