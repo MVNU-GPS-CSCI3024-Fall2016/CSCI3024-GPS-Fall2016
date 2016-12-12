@@ -6,13 +6,13 @@ describe('Savings Validations', function() {
         it('Should be valid if start date on init date', function() {
             var initDate = new Date(),
                 startDate = new Date();
-            assert.equal(savings.isInitDate(initDate, startDate), true);
+            assert.equal(savings.isValidStartDate(initDate, startDate), true);
         });
         it('Should be invalid if start date before init date', function() {
             var initDate = new Date(),
                 startDate = new Date();
             startDate.setDate(initDate.getDate()-1);
-            assert.equal(savings.isInitDate(initDate, startDate), false);
+            assert.equal(savings.isValidStartDate(initDate, startDate), false);
         });
     });
 
