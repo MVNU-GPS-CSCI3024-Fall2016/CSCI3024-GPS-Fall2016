@@ -7,7 +7,7 @@ module.exports = function(models) {
             endDate = req.query.endDateTime;
         models.AnswersHourly.findAnswersHourlyByDate(models, locationID, startDate, endDate)
         .then(function(answersHourly) {
-            res.render('index', { 
+            res.render('savings', {
                 title: 'Solar Data Savings',
                 answersHourly: answersHourly
             });

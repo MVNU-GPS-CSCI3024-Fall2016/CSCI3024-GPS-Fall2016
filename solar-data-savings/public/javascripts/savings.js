@@ -4,6 +4,7 @@ Savings.prototype.submitRequest = function() {
     var query = {};
     query.locationID = $('#locations option:selected').attr('value');
     query.kwh = $('#kwhCost').val();
+
     var initDate = new Date($('#locations option:selected').attr('data-init-date')),
         startDate = $('#startDate').val(),
         endDate = $('#endDate').val(),
@@ -25,6 +26,7 @@ Savings.prototype.submitRequest = function() {
     } catch(ex) {
         console.log(ex);
     }
+    
     try {
         this.validateQuery(initDate, query);
         window.document.location += JSON.stringify(query);
@@ -48,14 +50,11 @@ Savings.prototype.validateQuery = function(initDate, query) {
     if(!this.isInitDate(initDate, query.startDateTime)) {
         errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
     }
-    if(!this.isValidDateRange1(query.startDateTime, query.endDateTime)) {
-        errArray.push('Start date must not be after end date.');
+    if(!this.isValidDateRange(query.startDateTime, query.endDateTime)) {
+        errArray.push('Start date must preceed end date');
     }
-    if(!this.isValidDateRange2(query.endDateTime)) {
-        errArray.push('End date cannot be later than current date.');
-    }
-    if(this.isValidDateRange3(query.endDateTime)) {
-        errArray.push('You must search for different days or use the Date & Time search option.');
+    if(!this.isValidEndDate(query.endDateTime)) {
+        errArray.push('End date cannot be later than midnight of current date');
     }
 
     if(errArray.length > 0) {
@@ -63,25 +62,25 @@ Savings.prototype.validateQuery = function(initDate, query) {
     }
 }
 
-// Start date before initDate
+// Start date after initialization date
 Savings.prototype.isInitDate = function(initDate, date) {
     return date >= initDate;
 }
 
-// End date before start date
-Savings.prototype.isValidDateRange1 = function(start, end) {
-    return end >= start;
+// End date after start date
+Savings.prototype.isValidDateRange = function(startDate, endDate) {
+    return endDate > startDate;
 }
 
-// End date after current date
-Savings.prototype.isValidDateRange2 = function(end) {
-    var d = new Date();
-    return d > end;
+// End date before current date
+Savings.prototype.isValidEndDate = function(endDate) {
+    var date = new Date();
+    date.setHours(0);
+    return endDate <= date;
 }
 
-// End date equals start date while search date only is selected
-Savings.prototype.isValidDateRange3 = function(start, end) {
-    return (($('#date').attr('checked', 'true')) && (start == end));
+Savings.prototype.showError = function(message) {
+
 }
 
 var savings = new Savings();

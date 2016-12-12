@@ -12,6 +12,7 @@ describe('Savings Validations', function() {
             var initDate = new Date(),
                 startDate = new Date();
             startDate.setDate(initDate.getDate()-1);
+            assert.equal(savings.isInitDate(initDate, startDate), false);
         });
     });
 
@@ -19,7 +20,7 @@ describe('Savings Validations', function() {
         it('Should be valid if end date on start date', function() {
             var startDate = new Date(),
                 endDate = new Date();
-            assert.equal(savings.isValidDateRange1(startDate, endDate), true);
+            assert.equal(savings.isValidDateRange(startDate, endDate), true);
         });
         it('Should be invalid if end date before start date', function() {
             var startDate = new Date(),
