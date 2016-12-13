@@ -28,7 +28,7 @@ Index.prototype.closeError = function() {
 var index = new Index();
 
 $(document).ready(function() {
-    if(sessionStorage) {
+    if(sessionStorage.length > 0) {
         $('#locations').val(parseInt(sessionStorage.locations)).change();
         $('#startDate').val(sessionStorage.startDate);
         $('#endDate').val(sessionStorage.endDate);
