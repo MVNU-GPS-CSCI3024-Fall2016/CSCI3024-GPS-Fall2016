@@ -29,7 +29,7 @@ var index = new Index();
 
 $(document).ready(function() {
     if(sessionStorage) {
-        $('#locations option:selected').val(sessionStorage.locations);
+        $('#locations').val(parseInt(sessionStorage.locations)).change();
         $('#startDate').val(sessionStorage.startDate);
         $('#endDate').val(sessionStorage.endDate);
         if(sessionStorage.dateTime === 'datetime') {

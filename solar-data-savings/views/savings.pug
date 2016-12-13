@@ -2,15 +2,19 @@ extends index
 
 block savings
   div(class='col-sm-12 margin-bottom-20' id='savings-box')
-    div(class='col-sm-12')
-      h2 Cost Savings
-      h2 &#36; #{savings}
-    div(class='col-sm-12 margin-bottom-20')
-      each answersHourlySum in answersHourlySums
-        div(class='col-sm-6')
-          h3 Bank: #{answersHourlySum.getBankID()}
-          h3 &#36; #{answersHourlySum.getBankSavings(kwhCost)}
-    div(class='col-sm-12 margin-bottom-20')
-      h2(id='error-Margin')
-        | With #{answerPercentage}% accuracy.&#42;
-      p &#42; Accuracy is calculated from available readings.  No missing readings would result in 100&#37; accuracy.
+    h2 Cost Savings
+    if answersHourlySums.length > 0
+      div(class='col-sm-12')
+        h2 &#36; #{savings}
+      div(class='col-sm-12 margin-bottom-20')
+        each answersHourlySum in answersHourlySums
+          div(class='col-sm-6')
+            h3 Bank: #{answersHourlySum.getBankID()}
+            h3 &#36; #{answersHourlySum.getBankSavings(kwhCost)}
+      div(class='col-sm-12 margin-bottom-20')
+        h2(id='error-Margin')
+          | With #{answerPercentage}% accuracy.&#42;
+        p &#42; Accuracy is calculated from available readings.  No missing readings would result in 100&#37; accuracy.
+    else
+      div(class='col-sm-12')
+        h3 <em>No data for this date range at the selected location.</em>
