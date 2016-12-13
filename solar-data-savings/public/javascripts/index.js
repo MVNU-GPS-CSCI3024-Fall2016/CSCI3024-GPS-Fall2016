@@ -1,3 +1,5 @@
+'use strict';
+
 var Index = function() {};
 
 Index.prototype.displayTimepickers = function(isDateTime) {

@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('assert');
-var savings = require('../../public/javascripts/savings.js');
+var savings = require('../../solar-data-savings/models/answershourly.js');
 
 describe('Savings Validations', function() {
     describe('Start Date after Init Date', function() {
