@@ -1,3 +1,7 @@
+/**
+Sequelize setup - creates the Sequelize object to allow interaction with the database.
+ */
+
 'use strict';
 
 var fs        = require('fs');
@@ -13,7 +17,7 @@ if (process.env.DATABASE_URL) {
       port: config.port,
       host: config.host,
       // COMMENT THE LOGGING IN PRODUCTION
-      logging: console.log,
+      // logging: console.log,
       define: {
         freezeTableName: true,
         timestamps: false

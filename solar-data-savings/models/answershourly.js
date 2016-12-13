@@ -1,3 +1,7 @@
+/**
+ Model for AnswersHourly table, allowing Sequelize to interact with AnswersHourly. Contains all necessary class and instance methods for the program to correctly interact with AnswersHourly.
+ */
+
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {

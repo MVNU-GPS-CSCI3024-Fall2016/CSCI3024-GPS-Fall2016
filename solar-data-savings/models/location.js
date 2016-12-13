@@ -1,3 +1,7 @@
+/**
+ Model for Location table, allowing Sequelize to interact with Location. Contains all necessary class and instance methods for the program to correctly interact with Location.
+ */
+
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {

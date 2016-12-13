@@ -1,3 +1,7 @@
+/**
+Javascripts relating to the initial UI.
+ */
+
 'use strict';
 
 var Index = function() {};

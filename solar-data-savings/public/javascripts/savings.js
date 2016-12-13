@@ -1,3 +1,7 @@
+/**
+Javascripts relating to the savings UI.
+ */
+
 'use strict';
 
 var Savings = function() {};

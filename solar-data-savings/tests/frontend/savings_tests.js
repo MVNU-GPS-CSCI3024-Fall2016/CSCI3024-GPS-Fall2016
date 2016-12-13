@@ -1,3 +1,7 @@
+/**
+Unit tests for validation logic on the initial input values
+ */
+
 'use strict';
 
 var assert = require('assert');
@@ -50,8 +54,12 @@ describe('Savings Validations', function() {
             var kwhCost = 1;
             assert.equal(savings.isValidKwhCost(kwhCost), true);
         });
-        it('Should be invalid if kwhCost is equal to or less than 0, or if kWhCost is not a number', function () {
+        it('Should be invalid if kwhCost is equal to or less than 0', function () {
             var kwhCost = 0;
+            assert.equal(savings.isValidKwhCost(kwhCost), false);
+        });
+        it('Should be invalid if kwhCost is not a number', function () {
+            var kwhCost = 'monkeys';
             assert.equal(savings.isValidKwhCost(kwhCost), false);
         });
     });
