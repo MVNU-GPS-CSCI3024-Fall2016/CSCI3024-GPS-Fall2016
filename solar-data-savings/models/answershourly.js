@@ -64,6 +64,9 @@ module.exports = function(sequelize, DataTypes) {
                 if(!this.isValidEndDate(params.endDate)) {
                     errArray.push('End date cannot be later than midnight of current date');
                 }
+                if(!this.isValidKwhCost(query.kwhCost)) {
+                    errArray.push('Please enter a positive decimal value for the kWh Cost');
+                }
 
                 if(errArray.length > 0) {
                     throw errArray.join('\n');
@@ -83,6 +86,10 @@ module.exports = function(sequelize, DataTypes) {
                 date.setHours(0);
                 return endDate <= date;
             },
+
+            isValidKwhCost = function(kwhCost) {
+                return kwhCost > 0 && isNaN(kwhCost) == false;
+            }
 
             getTotalSavings: function(kwhCost, answersHourlySums) {
                 var savings = 0;

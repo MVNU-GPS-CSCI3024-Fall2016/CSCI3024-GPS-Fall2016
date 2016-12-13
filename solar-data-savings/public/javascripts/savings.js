@@ -57,6 +57,9 @@ Savings.prototype.validateQuery = function(initDate, query) {
     if(!this.isValidEndDate(query.endDateTime)) {
         errArray.push('End date cannot be later than midnight of current date');
     }
+    if(!this.isValidKwhCost(query.kwhCost)) {
+        errArray.push('Please enter a positive decimal value for the kWh Cost');
+    }
 
     if(errArray.length > 0) {
         throw errArray.join('\n');
@@ -78,6 +81,11 @@ Savings.prototype.isValidEndDate = function(endDate) {
     var date = new Date();
     date.setHours(0);
     return endDate <= date;
+}
+
+// Valid entry for kWhCost
+Savings.prototype.isValidKwhCost = function(kwhCost) {
+    return kwhCost > 0 && isNaN(kwhCost) == false;
 }
 
 Savings.prototype.storeInputs = function() {

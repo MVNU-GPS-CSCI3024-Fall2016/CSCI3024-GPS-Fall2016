@@ -44,4 +44,15 @@ describe('Savings Validations', function() {
             assert.equal(savings.isValidEndDate(endDate), false);
         });
     });
+
+    describe('kWhCost is a valid number', function() {
+        it('Should be valid if kWhCost is a valid number', function() {
+            var kWhCost = 1;
+            assert.equal(savings.isValidKwhCost(kWhCost), true);
+        });
+        it('Should be invalid if kWhCost is equal to or less than 0, or if kWhCost is not a number', function () {
+            var kWhCost = 0;
+            assert.equal(savings.isValidKwhCost(kWhCost), false);
+        });
+    });
 });
