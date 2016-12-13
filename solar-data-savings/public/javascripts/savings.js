@@ -1,3 +1,5 @@
+'use strict';
+
 var Savings = function() {};
 
 Savings.prototype.submitRequest = function() {
