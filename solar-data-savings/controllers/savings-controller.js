@@ -14,6 +14,7 @@ module.exports = function(models) {
 
         models.Location.findInitDateByID(params.locationID)
         .then(function(initDate) {
+            initDate = initDate[0].dataValues.initializationDate;
             if(initDate != null) {
                 params.initDate = initDate;
                 try {
@@ -21,13 +22,17 @@ module.exports = function(models) {
                 } catch(ex) {
                     console.log(ex);
                 }
-                models.AnswersHourly.findAnswersHourlyByDate(models, params)
-                .then(function(answersHourly) {
+
+                models.AnswersHourly.findAnswersHourlySumByBankID(models, params)
+                .then(function(answersHourlySums) {
                     models.Location.findAllLocations().then(function (locations) {
                         res.render('savings', {
                             title: 'Solar Data Savings',
                             locations: locations,
-                            answersHourly: answersHourly
+                            kwhCost: params.kwhCost,
+                            answersHourlySums: answersHourlySums,
+                            savings: models.AnswersHourly.getTotalSavings(params.kwhCost, answersHourlySums),
+                            answerPercentage: models.AnswersHourly.getAnswerPercentage(answersHourlySums)
                         });
                     });                    
                 });

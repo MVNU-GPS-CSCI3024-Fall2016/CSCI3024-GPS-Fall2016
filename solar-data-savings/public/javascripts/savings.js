@@ -11,7 +11,7 @@ Savings.prototype.submitRequest = function() {
         startTime = 0,
         endTime = 0;
 
-    if ($('#dateTime').is('checked')) {
+    if ($('#dateTime').is(':checked')) {
         var startMeridian = $('#startTimeMeridian').val(),
             endMeridian = $('#endTimeMeridian').val();
         startTime = this.setMeridianTime($('#startTime').val(), startMeridian);
@@ -29,7 +29,8 @@ Savings.prototype.submitRequest = function() {
 
     try {
         this.validateQuery(initDate, query);
-        window.document.location += 'savings?' + $.param(query);
+        this.storeInputs();
+        window.document.location = window.document.origin + '/savings?' + $.param(query);
     } catch(ex) {
         this.showError(ex);
     }
@@ -75,6 +76,20 @@ Savings.prototype.isValidEndDate = function(endDate) {
     var date = new Date();
     date.setHours(0);
     return endDate <= date;
+}
+
+Savings.prototype.storeInputs = function() {
+    sessionStorage.setItem('locations', $('#locations option:selected').val());
+    sessionStorage.setItem('dateTime', $('input[name=dateTime]:checked').val());
+    sessionStorage.setItem('startDate', $('#startDate').val());
+    sessionStorage.setItem('endDate', $('#endDate').val());
+    if ($('#dateTime').is(':checked')) {
+        sessionStorage.setItem('startTime', $('#startTime').val());
+        sessionStorage.setItem('startTimeMeridian', $('#startTimeMeridian').val());
+        sessionStorage.setItem('endTime', $('#endTime').val());
+        sessionStorage.setItem('endTimeMeridian', $('#endTimeMeridian').val());
+    }
+    sessionStorage.setItem('kwhCost', $('#kwhCost').val());
 }
 
 Savings.prototype.showError = function(message) {

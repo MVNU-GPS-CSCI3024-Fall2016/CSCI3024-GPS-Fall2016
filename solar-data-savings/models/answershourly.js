@@ -26,12 +26,17 @@ module.exports = function(sequelize, DataTypes) {
             * Conditions: AnswersHourly.AnswerDate BETWEEN (startDate, endDate),
             *             Bank.LocationID = locationID
             */
-            findAnswersHourlyByDate: function(models, params) {
+            findAnswersHourlySumByBankID: function(models, params) {
                 return this.findAll({
-                    attributes: ['wattsPerHour', 'answerQuantity'],
+                    attributes: [
+                        [sequelize.fn('SUM', sequelize.col('wattsPerHour')), 'wphSum'],
+                        [sequelize.fn('SUM', sequelize.col('answerQuantity')), 'aqSum'],
+                        [sequelize.fn('COUNT', sequelize.col('answerQuantity')), 'aqCount']
+                    ],
                     where: {
                         answerDate: { $between: [params.startDate, params.endDate] }
                     },
+                    group: ['Bank.bankID'],
                     include: [{
                         model: models.Bank,
                         attributes: ['bankID'],
@@ -40,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
                         },
                         include: [{
                             model: models.Location,
-                            attributes: ['locationName', 'latitude', 'longitude'],
+                            attributes: ['locationName'],
                             required: true
                         }]
                     }]
@@ -50,7 +55,7 @@ module.exports = function(sequelize, DataTypes) {
             validateParams: function(params) {
                 var errArray = [];
 
-                if(!this.isValidStartDate(initDate, params.startDate)) {
+                if(!this.isValidStartDate(params.initDate, params.startDate)) {
                     errArray.push('Start date must be on or after the earliest date of data collection indicated for the location');
                 }
                 if(!this.isValidDateRange(params.startDate, params.endDate)) {
@@ -77,31 +82,34 @@ module.exports = function(sequelize, DataTypes) {
                 var date = new Date();
                 date.setHours(0);
                 return endDate <= date;
+            },
+
+            getTotalSavings: function(kwhCost, answersHourlySums) {
+                var savings = 0;
+                answersHourlySums.forEach(function(data) {
+                    savings += (data.dataValues.wphSum / 1000) * kwhCost;
+                });
+                return savings.toFixed(2);
+            },
+
+            getAnswerPercentage: function(answersHourlySums) {
+                var answerPercentage = 0;
+                answersHourlySums.forEach(function(data) {
+                    answerPercentage += (data.dataValues.aqSum / data.dataValues.aqCount) / 60;
+                });
+                answerPercentage = Math.round((answerPercentage / answersHourlySums.length) * 100);
+                return answerPercentage;
             }
         },
 
         instanceMethods: {
-            getAnswerHourly: function() {
-                var bank = this.dataValues.Bank.dataValues;
-                var location = bank.Location.dataValues;
-                var answerHourly = {
-                    answerQuantity: this.dataValues.answerQuantity,
-                    wattsPerHour: this.dataValues.wattsPerHour,
-                    Bank: {
-                        bankID: bank.bankID
-                    },
-                    Location: {
-                        locationName: location.locationName,
-                        latitude: location.latitude,
-                        longitude: location.longitude
-                    }
-                };
-                return answerHourly;
+            getBankSavings: function(kwhCost) {
+                return ((this.dataValues.wphSum / 1000) * kwhCost).toFixed(2);
             },
 
-            getAnswerQuantity: function() {
-                var answerQuantity = this.dataValues.answerQuantity;
-                return answerQuantity;
+            getBankID: function() {
+                var bank = this.dataValues.Bank;
+                return bank.dataValues.bankID;
             }
         }
     });

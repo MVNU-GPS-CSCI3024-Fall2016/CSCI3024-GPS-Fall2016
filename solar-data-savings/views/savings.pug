@@ -1,26 +1,16 @@
 extends index
 
 block savings
-  div(class='col-sm-12' id='savings-box')
+  div(class='col-sm-12 margin-bottom-20' id='savings-box')
+    div(class='col-sm-12')
+      h2 Cost Savings
+      h2 &#36; #{savings}
     div(class='col-sm-12 margin-bottom-20')
-      h4 Cost Savings
-      h1
-        span &#36;
-        span ::total savings::  
-    div(class='col-sm-12 margin-bottom-20')
-      div(class='col-sm-6')
-        h4 Bank 1
-        h3(id='bankA-savings')
-            span &#36;
-            span ::savings amount bank a::  
-      div(class='col-sm-6')
-        h4 Bank 2
-        h3(id='bankB-savings')
-            span &#36;
-            span ::savings amount bank b::  
+      each answersHourlySum in answersHourlySums
+        div(class='col-sm-6')
+          h3 Bank: #{answersHourlySum.getBankID()}
+          h3 &#36; #{answersHourlySum.getBankSavings(kwhCost)}
     div(class='col-sm-12 margin-bottom-20')
       h2(id='error-Margin')
-        span With
-        span ::error margin amount::  
-        span accuracy.&#42;
-      p(class='margin-explanation') &#42; Accuracy is calculated from available readings.  No missing readings would result in 100&#37; accuracy.
+        | With #{answerPercentage}% accuracy.&#42;
+      p &#42; Accuracy is calculated from available readings.  No missing readings would result in 100&#37; accuracy.

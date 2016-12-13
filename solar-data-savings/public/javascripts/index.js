@@ -24,6 +24,26 @@ Index.prototype.closeError = function() {
 }
 
 var index = new Index();
+
+$(document).ready(function() {
+    if(sessionStorage) {
+        $('#locations option:selected').val(sessionStorage.locations);
+        $('#startDate').val(sessionStorage.startDate);
+        $('#endDate').val(sessionStorage.endDate);
+        if(sessionStorage.dateTime === 'datetime') {
+            $('#dateTime').attr('checked', true);
+            index.displayTimepickers(true);
+            $('#startTime').val(sessionStorage.startTime);
+            $('#startTimeMeridian').val(sessionStorage.startTimeMeridian);
+            $('#endTime').val(sessionStorage.endTime);
+            $('#endTimeMeridian').val(sessionStorage.endTimeMeridian);
+        } else {
+            $('#date').attr('checked', true);
+        }
+        $('#kwhCost').val(sessionStorage.kwhCost);
+    }
+});
+
 try {
     module.exports = index;
 } catch(ex) {};
