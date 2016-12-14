@@ -1,3 +1,7 @@
+/**
+Function to render the initial web page
+ */
+
 'use strict';
 
 module.exports = function (models) {

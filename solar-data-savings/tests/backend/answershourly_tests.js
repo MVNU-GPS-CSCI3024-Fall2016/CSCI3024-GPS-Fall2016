@@ -1,3 +1,7 @@
+/**
+Unit tests for validation logic after the query object has been passed.
+ */
+
 'use strict';
 
 var assert = require('assert');
@@ -53,6 +57,10 @@ describe('Savings Validations', function() {
         it('Should be invalid if kwhCost is equal to or less than 0, or if kWhCost is not a number', function () {
             var kwhCost = 0;
             assert.equal(models.AnswersHourly.isValidKwhCost(kwhCost), false);
+        });
+        it('Should be invalid if kwhCost is not a number', function () {
+            var kwhCost = 'monkeys';
+            assert.equal(savings.isValidKwhCost(kwhCost), false);
         });
     });
 });

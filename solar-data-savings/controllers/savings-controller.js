@@ -1,3 +1,7 @@
+/**
+Function to read the query object, execute methods to create a result object, and render the web page with the result.
+ */
+
 'use strict';
 
 module.exports = function(models) {

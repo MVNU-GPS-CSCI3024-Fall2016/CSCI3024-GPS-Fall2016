@@ -1,3 +1,7 @@
+/**
+Handles routes pertaining to the home page so that it is only initialized once.
+ */
+
 'use strict';
 
 var express = require('express');
