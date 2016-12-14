@@ -20,8 +20,8 @@ Savings.prototype.submitRequest = function() {
     if ($('#dateTime').is(':checked')) {
         var startMeridian = $('#startTimeMeridian').val(),
             endMeridian = $('#endTimeMeridian').val();
-        startTime = this.setMeridianTime($('#startTime').val(), startMeridian);
-        endTime = this.setMeridianTime($('#endTime').val(), endMeridian);
+        startTime = this.setMeridianTime(parseInt($('#startTime').val()), startMeridian);
+        endTime = this.setMeridianTime(parseInt($('#endTime').val()), endMeridian);
     }
 
     try {
