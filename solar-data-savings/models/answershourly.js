@@ -87,9 +87,9 @@ module.exports = function(sequelize, DataTypes) {
                 return endDate <= date;
             },
 
-            isValidKwhCost = function(kwhCost) {
+            isValidKwhCost: function(kwhCost) {
                 return kwhCost > 0 && isNaN(kwhCost) == false;
-            }
+            },
 
             getTotalSavings: function(kwhCost, answersHourlySums) {
                 var savings = 0;
