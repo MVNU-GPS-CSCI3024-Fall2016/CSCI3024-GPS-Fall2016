@@ -13,8 +13,8 @@ block savings
             h3 &#36; #{answersHourlySum.getBankSavings(kwhCost)}
       div(class='col-sm-12 margin-bottom-20')
         h2(id='error-Margin')
-          | Within #{answerPercentage}% accuracy.&#42;
-        p &#42; Accuracy is calculated from available readings.  No missing readings would result in 100&#37; accuracy.
+          | Based on #{answerPercentage}% of the samples.&#42;
+        p &#42; Percentge is calculated based on actual samples received.
     else
       div(class='col-sm-12')
         h3 <em>No data for this date range at the selected location.</em>

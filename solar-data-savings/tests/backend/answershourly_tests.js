@@ -60,7 +60,7 @@ describe('Savings Validations', function() {
         });
         it('Should be invalid if kwhCost is not a number', function () {
             var kwhCost = 'monkeys';
-            assert.equal(savings.isValidKwhCost(kwhCost), false);
+            assert.equal(models.AnswersHourly.isValidKwhCost(kwhCost), false);
         });
     });
 });
